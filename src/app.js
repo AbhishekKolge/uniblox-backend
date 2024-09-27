@@ -22,6 +22,8 @@ cloudinary.config({
 const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 
+const authRouter = require("./routes/authRoutes");
+
 const app = express();
 
 app.set("trust proxy", 1);
@@ -55,6 +57,9 @@ app.use(cors(corsOptionsDelegate));
 //     max: 60,
 //   })
 // );
+
+app.use("/api/v1/auth", authRouter);
+
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
