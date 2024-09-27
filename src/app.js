@@ -19,6 +19,7 @@ cloudinary.config({
   api_secret: process.env.CLOUD_API_SECRET,
 });
 
+const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 
 const app = express();
@@ -55,6 +56,7 @@ app.use(cors(corsOptionsDelegate));
 //   })
 // );
 
+app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 5000;
