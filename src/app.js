@@ -23,6 +23,8 @@ const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 
 const authRouter = require("./routes/authRoutes");
+const userRouter = require("./routes/userRoutes");
+const categoryRouter = require("./routes/categoryRoutes");
 
 const app = express();
 
@@ -59,7 +61,8 @@ app.use(cors(corsOptionsDelegate));
 // );
 
 app.use("/api/v1/auth", authRouter);
-
+app.use("/api/v1/users", userRouter);
+app.use("/api/v1/category", categoryRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
